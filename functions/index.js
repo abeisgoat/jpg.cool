@@ -1,8 +1,10 @@
-var functions = require('firebase-functions');
+var modules = [
+  require("./cool.js")
+  require("./purge.js"),
+]
 
-// // Start writing Firebase Functions
-// // https://firebase.google.com/functions/write-firebase-functions
-//
-// exports.helloWorld = functions.https.onRequest((request, response) => {
-//  response.send("Hello from Firebase!");
-// })
+modules.forEach(function (mod) {
+  Object.keys(mod).forEach(function (func) {
+    exports[func] = mod[func];
+  });
+});
