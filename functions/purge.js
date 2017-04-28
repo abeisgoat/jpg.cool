@@ -2,12 +2,13 @@
 
 let fs = require('fs');
 let fbTools = require('firebase-tools');
+let functions = require('firebase-functions');
 
 const DEPLOY_DIR = '/tmp/hosting';
 const FIREBASE_JSON_FILE = DEPLOY_DIR + '/firebase.json';
-const PUBLIC_DIR = '/tmp/hosting/public';
-const INDEX_FILE = PUBLIC_DIR + '/index.html';
-const PROJECT_NAME = 'test-new-hosting-panel';
+const PUBLIC_DIR = 'public';
+const FULL_PUBLIC_DIR = DEPLOY_DIR + '/' + PUBLIC_DIR;
+const INDEX_FILE = FULL_PUBLIC_DIR + '/index.html';
 
 let createDir = function(dir) {
   return new Promise((resolve, reject) => {
@@ -37,9 +38,9 @@ let writeFile = function(filename, contents) {
 
 let createHostingFiles = function() {
   return createDir(DEPLOY_DIR)
-    .then(() => createDir(PUBLIC_DIR))
+    .then(() => createDir(FULL_PUBLIC_DIR))
     .then(() => writeFile(INDEX_FILE, `<html><body>${Date.now()}</body></html>`))
-    .then(() => writeFile(FIREBASE_JSON_FILE, JSON.stringify({hosting:{public:'public'}})));
+    .then(() => writeFile(FIREBASE_JSON_FILE, JSON.stringify({hosting:{public:PUBLIC_DIR}})));
 };
 
 let deployHosting = function(project, token) {
@@ -51,6 +52,15 @@ let deployHosting = function(project, token) {
   });
 };
 
-module.exports = function(project, token) {
+module.exports.cdn = function(project, token) {
   return createHostingFiles().then(() => deployHosting(project, token));
+};
+
+module.exports.trigger = function () {
+  return functions.database.ref('/cache/{key}').onWrite(event => {
+    if (!event.previous.exists()) {
+      return;
+    }
+    return module.exports.cdn(functions.config().projectId, process.env.FIREBASE_TOKEN);
+  });
 };
