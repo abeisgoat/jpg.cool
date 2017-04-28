@@ -11,7 +11,7 @@ const PROJECT_NAME = 'test-new-hosting-panel';
 
 let createDir = function(dir) {
   return new Promise((resolve, reject) => {
-    fs.mkdir(dir, 0x0777, (err) => {
+    fs.mkdir(dir, 0o777, (err) => {
       if (err) {
         return reject(err);
       }
