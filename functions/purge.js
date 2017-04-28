@@ -52,15 +52,21 @@ let deployHosting = function(project, token) {
   });
 };
 
-module.exports.cdn = function(project, token) {
+exports.cdn = function(project, token) {
   return createHostingFiles().then(() => deployHosting(project, token));
 };
 
-module.exports.trigger = function () {
-  return functions.database.ref('/cache/{key}').onWrite(event => {
+try {
+  functions.config(); // This will fail locally
+
+  exports.purgeOnCacheChange = functions.database.ref('/cache/{key}').onWrite(event => {
     if (!event.previous.exists()) {
       return;
     }
-    return module.exports.cdn(functions.config().projectId, process.env.FIREBASE_TOKEN);
+    return exports.cdn(functions.config().projectId, process.env.FIREBASE_TOKEN);
   });
-};
+} catch (err) {
+  if (err.message.indexOf('functions.config() is not available') < 0) {
+    throw err;
+  }
+}

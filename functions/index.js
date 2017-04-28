@@ -1,8 +1,18 @@
 var functions = require('firebase-functions');
+var modules = [
+  require("./cool.js"),
+  require("./purge.js")
+]
 
-// // Start writing Firebase Functions
-// // https://firebase.google.com/functions/write-firebase-functions
-//
-// exports.helloWorld = functions.https.onRequest((request, response) => {
-//  response.send("Hello from Firebase!");
-// })
+process.env.azure_key = functions.config().env.azure_key;
+process.env.gcs_bucket = functions.config().env.gcs_bucket;
+
+modules.forEach(function (mod) {
+  Object.keys(mod).forEach(function (func) {
+    if (mod[func].__trigger) {
+      exports[func] = mod[func];
+    }
+  });
+});
+
+console.log(exports)
