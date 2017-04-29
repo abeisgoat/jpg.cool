@@ -3,7 +3,9 @@
   "description": "Cloud Functions for Firebase",
   "dependencies": {
     "firebase-admin": "4.1.2",
-    "firebase-functions": "0.5.5",
+    "firebase-functions": "^0.5",
+    "firebase-tools": "^3.6.1",
+    "fs": "0.0.1-security",
     "goon": "0.3.0"
   },
   "private": true
