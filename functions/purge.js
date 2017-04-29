@@ -60,10 +60,10 @@ try {
   functions.config(); // This will fail locally
 
   exports.purgeOnCacheChange = functions.database.ref('/cache/{key}').onWrite(event => {
-    if (!event.previous.exists()) {
+    if (!event.data.previous.exists()) {
       return;
     }
-    return exports.cdn(functions.config().projectId, process.env.FIREBASE_TOKEN);
+    return exports.cdn(process.env.GCLOUD_PROJECT, process.env.firebase_token);
   });
 } catch (err) {
   if (err.message.indexOf('functions.config() is not available') < 0) {
