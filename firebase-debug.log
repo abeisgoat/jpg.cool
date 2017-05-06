@@ -1,0 +1,93 @@
+[debug] ----------------------------------------------------------------------
+[debug] Command:      /usr/bin/nodejs /usr/local/bin/firebase deploy
+[debug] CLI Version:  3.6.1-fhcf.2
+[debug] Platform:     linux
+[debug] Node Version: v4.7.2
+[debug] Time:         Fri May 05 2017 22:19:59 GMT-0700 (PDT)
+[debug] ----------------------------------------------------------------------
+[debug] 
+[debug] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/jpg-cool  
+ Fri May 05 2017 22:19:59 GMT-0700 (PDT)
+[debug] <<< HTTP RESPONSE 200
+[debug] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/jpg-cool/tokens  
+ Fri May 05 2017 22:20:00 GMT-0700 (PDT)
+[debug] <<< HTTP RESPONSE 200
+[info] 
+[info] === Deploying to 'jpg-cool'...
+[info] 
+[info] i  deploying database, functions, hosting
+[info] ✔  database: rules ready to deploy.
+[debug] > [functions] package.json contents: {
+  "name": "functions",
+  "description": "Cloud Functions for Firebase",
+  "dependencies": {
+    "@google-cloud/debug-agent": "^1.0.0",
+    "@google-cloud/trace-agent": "^1.1.0",
+    "firebase-admin": "4.1.2",
+    "firebase-functions": "0.5.5",
+    "goon": "^0.4.0"
+  },
+  "private": true
+}
+[info] i  functions: ensuring necessary APIs are enabled...
+[info] i  runtimeconfig: ensuring necessary APIs are enabled...
+[debug] >>> HTTP REQUEST GET https://servicemanagement.googleapis.com/v1/services/cloudfunctions.googleapis.com/projectSettings/jpg-cool?view=CONSUMER_VIEW  
+ Fri May 05 2017 22:20:02 GMT-0700 (PDT)
+[debug] >>> HTTP REQUEST GET https://servicemanagement.googleapis.com/v1/services/runtimeconfig.googleapis.com/projectSettings/jpg-cool?view=CONSUMER_VIEW  
+ Fri May 05 2017 22:20:02 GMT-0700 (PDT)
+[debug] <<< HTTP RESPONSE 200
+[info] ✔  runtimeconfig: all necessary APIs are enabled
+[debug] <<< HTTP RESPONSE 200
+[info] ✔  functions: all necessary APIs are enabled
+[debug] >>> HTTP REQUEST GET https://appengine.googleapis.com/v1/apps/jpg-cool  
+ Fri May 05 2017 22:20:03 GMT-0700 (PDT)
+[debug] >>> HTTP REQUEST GET https://apikeys.googleapis.com/v1/projects/jpg-cool/apiKeys  
+ Fri May 05 2017 22:20:03 GMT-0700 (PDT)
+[debug] <<< HTTP RESPONSE 200
+[debug] <<< HTTP RESPONSE 200
+[info] i  functions: preparing functions directory for uploading...
+[debug] >>> HTTP REQUEST GET https://runtimeconfig.googleapis.com/v1beta1/projects/jpg-cool/configs  
+ Fri May 05 2017 22:20:03 GMT-0700 (PDT)
+[debug] <<< HTTP RESPONSE 200
+[debug] >>> HTTP REQUEST GET https://runtimeconfig.googleapis.com/v1beta1/projects/jpg-cool/configs/env/variables  
+ Fri May 05 2017 22:20:04 GMT-0700 (PDT)
+[debug] <<< HTTP RESPONSE 200
+[debug] >>> HTTP REQUEST GET https://runtimeconfig.googleapis.com/v1beta1/projects/jpg-cool/configs/env/variables/gcs_bucket  
+ Fri May 05 2017 22:20:04 GMT-0700 (PDT)
+[debug] >>> HTTP REQUEST GET https://runtimeconfig.googleapis.com/v1beta1/projects/jpg-cool/configs/env/variables/azure_key  
+ Fri May 05 2017 22:20:04 GMT-0700 (PDT)
+[debug] <<< HTTP RESPONSE 200
+[debug] <<< HTTP RESPONSE 200
+[debug] > [functions] runtime config materialized as: {
+  "env": {
+    "gcs_bucket": "jpg-cool-cache",
+    "azure_key": "c32845716ca145a89aaa2b76863d0cd3"
+  },
+  "firebase": {
+    "databaseURL": "https://jpg-cool.firebaseio.com",
+    "storageBucket": "jpg-cool.appspot.com",
+    "apiKey": "AIzaSyAlZkPZ6pfkUkiijyEJZSL6_HJotTVOxeE",
+    "authDomain": "jpg-cool.firebaseapp.com"
+  }
+}
+[debug] > [functions] parsed triggers: [
+  {
+    "httpsTrigger": {},
+    "name": "request_cool",
+    "entryPoint": "request_cool"
+  },
+  {
+    "eventTrigger": {
+      "resource": "projects/_/instances/jpg-cool/refs/cache/{task}",
+      "eventType": "providers/google.firebase.database/eventTypes/ref.write"
+    },
+    "name": "fulfill_cool",
+    "entryPoint": "fulfill_cool"
+  },
+  {
+    "httpsTrigger": {},
+    "name": "hello_world",
+    "entryPoint": "hello_world"
+  }
+]
