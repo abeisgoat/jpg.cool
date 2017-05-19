@@ -1,6 +1,3 @@
-require('@google-cloud/debug-agent').start();
-require('@google-cloud/trace-agent').start();
-
 var functions = require('firebase-functions');
 var modules = [
   require("./cool.js"),
