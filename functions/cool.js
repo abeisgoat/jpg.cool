@@ -11,7 +11,7 @@ var genki = goon.enableEvent("genki", {
 });
 
 const errorResponse = {
-  url: "https://jpg.cool/error.gif"
+  url: "https://jpg.cool/error.gif",
   error: true
 };
 
