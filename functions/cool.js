@@ -10,7 +10,10 @@ var genki = goon.enableEvent("genki", {
   verbose: true
 });
 
-const errorResponse = {url: "https://jpg.cool/error.gif"};
+const errorResponse = {
+  url: "https://jpg.cool/error.gif"
+  error: true
+};
 
 exports.request_cool =
   functions.https.onRequest((req, res) => {
@@ -39,9 +42,11 @@ exports.fulfill_cool =
 
     return genki(event).then((resp) => {
       var r = errorResponse;
+      
       try {
         r = JSON.parse(resp);
       } catch (err) {}
-      event.data.ref.update(r);
+      
+      return event.data.ref.update(r);
     });
   });
