@@ -10,15 +10,20 @@ var genki = goon.enableEvent("genki", {
   verbose: true
 });
 
+const errorResponse = {url: "https://jpg.cool/error.gif"};
+
 exports.request_cool =
   functions.https.onRequest((req, res) => {
     var r = {phrase: req.path.slice(1, req.path.length)};
     var wait = function (snap) {
       var val = snap.val();
-      if (!val || !val.url) return;
-
-      res.redirect(val.url);
-      ref.off("value", wait);
+      if (val && val.url) {
+        res.redirect(val.url);
+        ref.off("value", wait); 
+      } else if (val && val.error) {
+        res.redirect(errorResponse.url);
+        ref.off("value", wait); 
+      }
     }
     var hash = crypto.createHash('md5').update(r.phrase).digest("hex").toString();
     var ref = admin.database().ref("cache").child(hash);
@@ -33,9 +38,9 @@ exports.fulfill_cool =
       return
 
     return genki(event).then((resp) => {
-      var r = {url: "https://jpg.cool/error.gif"}
+      var r = errorResponse;
       try {
-        r = JSON.parse(resp)
+        r = JSON.parse(resp);
       } catch (err) {}
       event.data.ref.update(r);
     });
