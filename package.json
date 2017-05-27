@@ -1,0 +1,24 @@
+{
+  "name": "jpg.cool",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "deploy": "firebase deploy",
+    "deploy:ci": "firebase deploy --token $FIREBASE_CI_TOKEN",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/abehaskins/jpg.cool.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/abehaskins/jpg.cool/issues"
+  },
+  "homepage": "https://github.com/abehaskins/jpg.cool#readme",
+  "dependencies": {
+    "firebase-tools": "^3.9.0"
+  }
+}
