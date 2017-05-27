@@ -1,4 +1,5 @@
 var functions = require('firebase-functions');
+var admin = require('firebase-admin');
 var modules = [
   require("./cool.js"),
   require("./purge.js"),
