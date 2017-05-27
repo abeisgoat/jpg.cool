@@ -23,7 +23,7 @@ exports.notify =
           message.text = `Uh-oh, someone got an error for "${entry.phrase}"`;
         }
 
-        const body = JSON.Stringify(message);
+        const body = JSON.stringify(message);
         const url = `https://dynamite.sandbox.googleapis.com/v1/rooms/AAAAiJBrU5o/webhooks?key=${params.key}&token=${params.token}`;
         console.log(url);
         console.log(body);
