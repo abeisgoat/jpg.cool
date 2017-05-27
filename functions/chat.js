@@ -2,7 +2,7 @@ var functions = require('firebase-functions');
 var admin = require('firebase-admin');
 var fetch = require('node-fetch');
 
-exports.fulfill_cool =
+exports.notify =
   functions.database.ref('/cache/{task}/url')
   .onWrite((event) => {
     return event.data.ref.parent.once("value")
