@@ -3,8 +3,6 @@ var goon = require('goon');
 var admin = require('firebase-admin');
 var crypto = require('crypto');
 
-admin.initializeApp(functions.config().firebase);
-
 var genki = goon.enableEvent("genki", {
   arguments: ["get"],
   verbose: true
@@ -22,10 +20,10 @@ exports.request_cool =
       var val = snap.val();
       if (val && val.url) {
         res.redirect(val.url);
-        ref.off("value", wait); 
+        ref.off("value", wait);
       } else if (val && val.error) {
         res.redirect(errorResponse.url);
-        ref.off("value", wait); 
+        ref.off("value", wait);
       }
     }
     var hash = crypto.createHash('md5').update(r.phrase).digest("hex").toString();
@@ -42,11 +40,11 @@ exports.fulfill_cool =
 
     return genki(event).then((resp) => {
       var r = errorResponse;
-      
+
       try {
         r = JSON.parse(resp);
       } catch (err) {}
-      
+
       return event.data.ref.update(r);
     });
   });

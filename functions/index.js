@@ -5,6 +5,8 @@ var modules = [
   require("./chat.js")
 ]
 
+admin.initializeApp(functions.config().firebase);
+
 process.env.azure_key = functions.config().env.azure_key;
 process.env.gcs_bucket = functions.config().env.gcs_bucket;
 
