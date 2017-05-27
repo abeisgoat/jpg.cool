@@ -1,7 +1,8 @@
 var functions = require('firebase-functions');
 var modules = [
   require("./cool.js"),
-  require("./purge.js")
+  require("./purge.js"),
+  require("./chat.js")
 ]
 
 process.env.azure_key = functions.config().env.azure_key;
