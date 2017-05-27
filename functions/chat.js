@@ -28,8 +28,7 @@ exports.notify =
         console.log(url);
         console.log(body);
 
-        return fetch({
-          url,
+        return fetch(url, {
           headers: {
             "Content-Type": "application/json"
           },
