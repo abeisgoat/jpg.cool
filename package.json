@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build:genki": "go get -v -d functions/genki && go build -v -o functions/genki ./genki/",
+    "build:genki": "go get -v -d ./genki/ && go build -v -o functions/genki ./genki/",
     "deploy": "firebase deploy",
     "deploy:ci": "firebase deploy --token $FIREBASE_CI_TOKEN",
     "test": "echo \"Error: no test specified\" && exit 1"
