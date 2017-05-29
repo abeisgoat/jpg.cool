@@ -1,0 +1,46 @@
+<component name="libraryTable">
+  <library name="GOPATH &lt;genki&gt;">
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/../../oceanic-night" />
+      <root url="file://$PROJECT_DIR$/../../abe.today" />
+      <root url="file://$PROJECT_DIR$/../../github.com" />
+      <root url="file://$PROJECT_DIR$/../../gocloud-exp" />
+      <root url="file://$PROJECT_DIR$/../../golang.org" />
+      <root url="file://$PROJECT_DIR$/../../umph.capital" />
+      <root url="file://$PROJECT_DIR$/../../srcd.works" />
+      <root url="file://$PROJECT_DIR$/../../gopkg.in" />
+      <root url="file://$PROJECT_DIR$/../../cloud.google.com" />
+      <root url="file://$PROJECT_DIR$/../../google.golang.org" />
+      <root url="file://$PROJECT_DIR$/../../googlemaps.github.io" />
+      <root url="file://$PROJECT_DIR$/../../9fans.net" />
+      <root url="file://$PROJECT_DIR$/../../upsheet" />
+      <root url="file://$PROJECT_DIR$/../../greatblue" />
+      <root url="file://$PROJECT_DIR$/../../go.uber.org" />
+      <root url="file://$PROJECT_DIR$/../../stampede" />
+      <root url="file://$PROJECT_DIR$/.." />
+      <root url="file://$PROJECT_DIR$/../../bitbucket.org" />
+      <root url="file://$PROJECT_DIR$/../../abeisgreat.com" />
+    </CLASSES>
+    <SOURCES>
+      <root url="file://$PROJECT_DIR$/../../oceanic-night" />
+      <root url="file://$PROJECT_DIR$/../../abe.today" />
+      <root url="file://$PROJECT_DIR$/../../github.com" />
+      <root url="file://$PROJECT_DIR$/../../gocloud-exp" />
+      <root url="file://$PROJECT_DIR$/../../golang.org" />
+      <root url="file://$PROJECT_DIR$/../../umph.capital" />
+      <root url="file://$PROJECT_DIR$/../../srcd.works" />
+      <root url="file://$PROJECT_DIR$/../../gopkg.in" />
+      <root url="file://$PROJECT_DIR$/../../cloud.google.com" />
+      <root url="file://$PROJECT_DIR$/../../google.golang.org" />
+      <root url="file://$PROJECT_DIR$/../../googlemaps.github.io" />
+      <root url="file://$PROJECT_DIR$/../../9fans.net" />
+      <root url="file://$PROJECT_DIR$/../../upsheet" />
+      <root url="file://$PROJECT_DIR$/../../greatblue" />
+      <root url="file://$PROJECT_DIR$/../../go.uber.org" />
+      <root url="file://$PROJECT_DIR$/../../stampede" />
+      <root url="file://$PROJECT_DIR$/.." />
+      <root url="file://$PROJECT_DIR$/../../bitbucket.org" />
+      <root url="file://$PROJECT_DIR$/../../abeisgreat.com" />
+    </SOURCES>
+  </library>
+</component>
