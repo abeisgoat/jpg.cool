@@ -45,6 +45,7 @@ exports.fulfill_cool =
         r = JSON.parse(resp);
       } catch (err) {}
 
+      r.updated = (new Date()).getTime();
       return event.data.ref.update(r);
     });
   });
