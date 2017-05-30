@@ -37,3 +37,9 @@ exports.notify =
         });
       });
   });
+
+exports.incoming_notify =
+  functions.https.onRequest((req, res) => {
+    console.log("Got a message");
+    console.log(req.body);
+  });
