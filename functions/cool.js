@@ -2,6 +2,10 @@ var functions = require('firebase-functions');
 var goon = require('goon');
 var admin = require('firebase-admin');
 var crypto = require('crypto');
+var Analytics = require('analytics-node');
+var analytics = new Analytics(functions.config().segmentio.writekey, {
+  flushAfter: 500
+});
 
 var genki = goon.enableEvent("genki", {
   arguments: ["get"],
@@ -16,13 +20,24 @@ const errorResponse = {
 exports.request_cool =
   functions.https.onRequest((req, res) => {
     var r = {phrase: req.path.slice(1, req.path.length)};
+
+    analytics.track({
+      userId:'jpg-cool',
+      event: 'request_cool',
+      properties: r
+    });
+
     var wait = function (snap) {
       var val = snap.val();
       if (val && val.url) {
-        res.redirect(val.url);
+        performAnalyticsFlush().then(() => {
+            res.redirect(val.url);
+        });
         ref.off("value", wait);
       } else if (val && val.error) {
-        res.redirect(errorResponse.url);
+        performAnalyticsFlush().then(() => {
+            res.redirect(errorResponse.url);
+        });
         ref.off("value", wait);
       }
     }
@@ -43,9 +58,37 @@ exports.fulfill_cool =
 
       try {
         r = JSON.parse(resp);
-      } catch (err) {}
 
-      //r.updated = (new Date()).getTime();
-      return event.data.ref.update(r);
+        analytics.track({
+          userId:'jpg-cool',
+          event: 'fulfill_cool',
+          properties: r
+        });
+      } catch (err) {
+        analytics.track({
+          userId:'jpg-cool',
+          event: 'fulfill_cool_error',
+          properties: {
+            error: err
+          }
+        });
+      }
+
+      return Promise.all([
+        performAnalyticsFlush();
+        event.data.ref.update(r)
+      ]);
     });
   });
+
+function performAnalyticsFlush() {
+  return new Promise(function(resolve, reject) {
+    analytics.flush(function(err, batch){
+      if (err) {
+        reject(err);
+      } else {
+        resolve();
+      }
+    });
+  });
+}

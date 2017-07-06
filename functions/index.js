@@ -16,5 +16,3 @@ modules.forEach(function (mod) {
     exports[func] = mod[func];
   });
 });
-
-console.log(exports)

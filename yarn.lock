@@ -72,6 +72,13 @@
     string-format-obj "^1.0.0"
     through2 "^2.0.0"
 
+"@segment/loosely-validate-event@^1.1.2":
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/@segment/loosely-validate-event/-/loosely-validate-event-1.1.2.tgz#d77840999e3f7e43e74b3b0d43391c1526f793b8"
+  dependencies:
+    component-type "^1.2.1"
+    join-component "^1.1.0"
+
 abbrev@1:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/abbrev/-/abbrev-1.1.0.tgz#d0554c2256636e2f56e7c2e5ad183f859428d81f"
@@ -100,6 +107,20 @@ ajv@5.0.1:
   dependencies:
     co "^4.6.0"
     json-stable-stringify "^1.0.1"
+
+analytics-node:
+  version "2.4.1"
+  resolved "https://registry.yarnpkg.com/analytics-node/-/analytics-node-2.4.1.tgz#1f96c8eb887b6c47691044ac7fc9a1231fb020f7"
+  dependencies:
+    "@segment/loosely-validate-event" "^1.1.2"
+    clone "^2.1.1"
+    commander "^2.9.0"
+    crypto-token "^1.0.1"
+    debug "^2.6.2"
+    lodash "^4.17.4"
+    remove-trailing-slash "^0.1.0"
+    superagent "^3.5.0"
+    superagent-retry "^0.6.0"
 
 ansi-align@^1.1.0:
   version "1.1.0"
@@ -433,6 +454,10 @@ cliui@^3.0.3, cliui@^3.2.0:
     strip-ansi "^3.0.1"
     wrap-ansi "^2.0.0"
 
+clone@^2.1.1:
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/clone/-/clone-2.1.1.tgz#d217d1e961118e3ac9a4b8bba3285553bf647cdb"
+
 co@^4.6.0:
   version "4.6.0"
   resolved "https://registry.yarnpkg.com/co/-/co-4.6.0.tgz#6ea6bdf3d853ae54ccb8e47bfa0bf3f9031fb184"
@@ -474,6 +499,10 @@ compare-semver@^1.0.0:
 component-emitter@^1.2.0:
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/component-emitter/-/component-emitter-1.2.1.tgz#137918d6d78283f7df7a6b7c5a63e140e69425e6"
+
+component-type@^1.2.1:
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/component-type/-/component-type-1.2.1.tgz#8a47901700238e4fc32269771230226f24b415a9"
 
 compress-commons@~0.3.0:
   version "0.3.0"
@@ -624,6 +653,10 @@ crypto-random-string@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/crypto-random-string/-/crypto-random-string-1.0.0.tgz#a230f64f568310e1498009940790ec99545bca7e"
 
+crypto-token@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/crypto-token/-/crypto-token-1.0.1.tgz#27c6482faf3b63c2f5da11577f8304346fe797a5"
+
 csv-streamify@^3.0.4:
   version "3.0.4"
   resolved "https://registry.yarnpkg.com/csv-streamify/-/csv-streamify-3.0.4.tgz#4cb614c57e3f299cca17b63fdcb4ad167777f47a"
@@ -646,7 +679,7 @@ dashdash@^1.12.0:
   dependencies:
     assert-plus "^1.0.0"
 
-debug@^2.2.0, debug@2.6.8:
+debug@^2.2.0, debug@^2.6.2, debug@2.6.8:
   version "2.6.8"
   resolved "https://registry.yarnpkg.com/debug/-/debug-2.6.8.tgz#e731531ca2ede27d188222427da17821d68ff4fc"
   dependencies:
@@ -1512,6 +1545,10 @@ jodid25519@^1.0.0:
   dependencies:
     jsbn "~0.1.0"
 
+join-component@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/join-component/-/join-component-1.1.0.tgz#b8417b750661a392bee2c2537c68b2a9d4977cd5"
+
 join-path@^1.0.0:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/join-path/-/join-path-1.1.1.tgz#10535a126d24cbd65f7ffcdf15ef2e631076b505"
@@ -1715,7 +1752,7 @@ lodash@^3.10.0, lodash@^3.10.1, lodash@~3.10.0, lodash@~3.10.1:
   version "3.10.1"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-3.10.1.tgz#5bf45e8e49ba4189e17d482789dfd15bd140b7b6"
 
-lodash@^4.11.2, lodash@^4.14.0, lodash@^4.15.0, lodash@^4.3.0, lodash@^4.6.1, lodash@4.17.4:
+lodash@^4.11.2, lodash@^4.14.0, lodash@^4.15.0, lodash@^4.17.4, lodash@^4.3.0, lodash@^4.6.1, lodash@4.17.4:
   version "4.17.4"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.4.tgz#78203a4d1c328ae1d86dca6460e369b57f4055ae"
 
@@ -2307,6 +2344,10 @@ registry-url@^3.0.0, registry-url@^3.0.3:
   dependencies:
     rc "^1.0.1"
 
+remove-trailing-slash@^0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/remove-trailing-slash/-/remove-trailing-slash-0.1.0.tgz#1498e5df0984c27e49b76ebf06887ca2d01150d2"
+
 repeating@^1.1.2:
   version "1.1.3"
   resolved "https://registry.yarnpkg.com/repeating/-/repeating-1.1.3.tgz#3d4114218877537494f97f77f9785fab810fa4ac"
@@ -2628,7 +2669,11 @@ stubs@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/stubs/-/stubs-3.0.0.tgz#e8d2ba1fa9c90570303c030b6900f7d5f89abe5b"
 
-superagent@^3.0.0:
+superagent-retry@^0.6.0:
+  version "0.6.0"
+  resolved "https://registry.yarnpkg.com/superagent-retry/-/superagent-retry-0.6.0.tgz#e49b35ca96c0e3b1d0e3f49605136df0e0a028b7"
+
+superagent@^3.0.0, superagent@^3.5.0:
   version "3.5.2"
   resolved "https://registry.yarnpkg.com/superagent/-/superagent-3.5.2.tgz#3361a3971567504c351063abeaae0faa23dbf3f8"
   dependencies:
