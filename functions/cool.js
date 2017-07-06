@@ -75,7 +75,7 @@ exports.fulfill_cool =
       }
 
       return Promise.all([
-        performAnalyticsFlush();
+        performAnalyticsFlush(),
         event.data.ref.update(r)
       ]);
     });
