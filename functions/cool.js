@@ -21,11 +21,13 @@ exports.request_cool =
   functions.https.onRequest((req, res) => {
     var r = {phrase: req.path.slice(1, req.path.length)};
 
-    analytics.track({
-      userId:'jpg-cool',
-      event: 'request_cool',
-      properties: r
-    });
+    if (r.phrase !== "ping.jpg") {
+      analytics.track({
+        userId:'jpg-cool',
+        event: 'request_cool',
+        properties: r
+      });
+    }
 
     var wait = function (snap) {
       var val = snap.val();
