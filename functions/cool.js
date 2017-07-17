@@ -27,8 +27,7 @@ exports.request_cool =
     var reported = req.query.flag !== undefined || req.query.report !== undefined || req.query.nsfw !== undefined;
 
     var r = {
-      phrase: req.path.slice(1, req.path.length),
-      reported: reported
+      phrase: req.path.slice(1, req.path.length)
     };
 
     if (r.phrase !== "ping.jpg") {
@@ -41,8 +40,12 @@ exports.request_cool =
 
     var wait = function (snap) {
       var val = snap.val();
-      if (val && val.reported) {
-        performAnalyticsFlush().then(() => {
+      if (val && val.url && reported) {
+        performAnalyticsFlush()
+        .then(() => {
+            return ref.child("reported").set(true);
+        })
+        .then(() => {
             res.redirect(reportedResponse.url);
         });
         ref.off("value", wait);
