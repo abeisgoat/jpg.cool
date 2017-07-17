@@ -17,9 +17,19 @@ const errorResponse = {
   error: true
 };
 
+const reportedResponse = {
+  url: "https://jpg.cool/fixed.gif"
+};
+
+
 exports.request_cool =
   functions.https.onRequest((req, res) => {
-    var r = {phrase: req.path.slice(1, req.path.length)};
+    var reported = req.query.flag | req.query.report | req.query.nsfw;
+
+    var r = {
+      phrase: req.path.slice(1, req.path.length),
+      reported: reported
+    };
 
     if (r.phrase !== "ping.jpg") {
       analytics.track({
@@ -31,7 +41,12 @@ exports.request_cool =
 
     var wait = function (snap) {
       var val = snap.val();
-      if (val && val.url) {
+      if (val && val.reported) {
+        performAnalyticsFlush().then(() => {
+            res.redirect(reportedResponse.url);
+        });
+        ref.off("value", wait);
+      } else if (val && val.url) {
         performAnalyticsFlush().then(() => {
             res.redirect(val.url);
         });
