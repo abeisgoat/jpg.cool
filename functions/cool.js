@@ -24,7 +24,7 @@ const reportedResponse = {
 
 exports.request_cool =
   functions.https.onRequest((req, res) => {
-    var reported = req.query.flag | req.query.report | req.query.nsfw;
+    var reported = req.query.flag !== undefined || req.query.report !== undefined || req.query.nsfw !== undefined;
 
     var r = {
       phrase: req.path.slice(1, req.path.length),
