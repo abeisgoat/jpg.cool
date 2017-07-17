@@ -40,7 +40,7 @@ exports.request_cool =
 
     var wait = function (snap) {
       var val = snap.val();
-      if (val && val.url && reported) {
+      if (val && val.url && (reported || val.reported)) {
         performAnalyticsFlush()
         .then(() => {
             return ref.child("reported").set(true);
