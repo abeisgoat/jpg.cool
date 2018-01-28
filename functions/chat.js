@@ -40,12 +40,12 @@ exports.notify =
               "Content-Type": "application/json"
             },
             method: "POST",
-            body: {
+            body: JSON.stringify({
               api_key: functions.config().jebe.key, 
               room_id: "rspOHfCKEQTwY6sh6gfj", 
               from: functions.config().jebe.id, 
               body: message.text
-            }
+            })
           })
         ]);
       });
