@@ -166,7 +166,7 @@ func UploadToGCS(file *os.File) (error, string) {
 		return err, ""
 	}
 
-	cloudObject := bucket.Object(uuid.NewV4().String())
+	cloudObject := bucket.Object(uuid.Must(uuid.NewV4()).String())
 
 	wc := cloudObject.NewWriter(ctx)
 	wc.Write(data)
