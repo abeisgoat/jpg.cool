@@ -24,17 +24,30 @@ exports.notify =
         }
 
         const body = JSON.stringify(message);
-        const url = `https://dynamite.sandbox.googleapis.com/v1/rooms/AAAAiJBrU5o/webhooks?key=${params.key}&token=${params.token}`;
-        console.log(url);
-        console.log(body);
+        const hangouts_url = `https://dynamite.sandbox.googleapis.com/v1/rooms/AAAAiJBrU5o/webhooks?key=${params.key}&token=${params.token}`;
+        const jebe_url = `https://us-central1-jebe-app.cloudfunctions.net/bot/send`;
 
-        return fetch(url, {
-          headers: {
-            "Content-Type": "application/json"
-          },
-          method: "POST",
-          body
-        });
+        return Promise.all([
+          fetch(hangouts_url, {
+            headers: {
+              "Content-Type": "application/json"
+            },
+            method: "POST",
+            body
+          }),
+          fetch(jebe_url, {
+            headers: {
+              "Content-Type": "application/json"
+            },
+            method: "POST",
+            body: {
+              api_key: functions.config().jebe.key, 
+              room_id: "rspOHfCKEQTwY6sh6gfj", 
+              from: functions.config().jebe.id, 
+              body: message.text
+            }
+          })
+        ]);
       });
   });
 
