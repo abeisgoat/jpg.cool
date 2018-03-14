@@ -46,6 +46,7 @@ exports.request_cool =
             return ref.child("reported").set(true);
         })
         .then(() => {
+            res.setHeader('Cache-Control', 'public, max-age=600');
             res.redirect(reportedResponse.url);
         });
         ref.off("value", wait);
